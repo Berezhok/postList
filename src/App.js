@@ -18,7 +18,7 @@ export const App = () => {
     return (
         <div>
            <Header/>
-           <List list={postsList}/>
+           <List list={postsList} /> 
            
         </div>
     );
