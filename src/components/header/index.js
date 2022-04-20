@@ -1,9 +1,10 @@
 import React from 'react'
-import  "./style.css"
+import { CreatePost } from '../button'
+import  "../header/index.css"
 
 export const Header = () => {
   return (
-    <div>
+    <div className='header__line'>
         <div className="header__block">
             <div>
                 Logo
@@ -12,6 +13,9 @@ export const Header = () => {
                 <a href='#'>Home</a>
                 <a href='#'>Docs</a>
                 <a href='#'>GitHub</a>
+            </div>
+            <div>
+                <CreatePost/>
             </div>
         </div>
         <hr/>

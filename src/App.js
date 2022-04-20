@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Header } from './components/header';
 import { List } from './components/list';
 import api from './utils/api';
-
+import "../src/style.css"
+import { Footer } from './components/footer';
 
 
 
@@ -16,9 +17,11 @@ export const App = () => {
             },[])
   
     return (
-        <div>
+        <div className='main__body'>
+           
            <Header/>
            <List list={postsList} /> 
+           <Footer/>
            
         </div>
     );
