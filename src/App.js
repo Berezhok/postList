@@ -9,17 +9,32 @@ import { Footer } from './components/footer';
 
 export const App = () => {
     const [postsList, setPostsList] = useState(null);
+    const [user, setUser] = useState("");
+    // const [avatar, setAvatar] = useState("https://i.ytimg.com/vi/PbbNMgPVfqs/maxresdefault.jpg");
 
     useEffect(() => {
         api.getPosts()
             .then(res => res.json())
             .then((result) => setPostsList(result))
             },[])
-  
+
+    useEffect(()=>{
+        api.getUserInfo()
+        .then(res => res.json())
+            .then((user) => setUser(user))
+            },[])
+    
+    // useEffect(()=>{
+    //     api.getAvatar()
+    //     .then(res => res.json())
+    //         .then((data) => setAvatar(data))
+    //         },[])
+
+
     return (
         <div className='main__body'>
            
-           <Header/>
+           <Header user={user} /*avatarUser={avatar}*//>
            <List list={postsList} /> 
            <Footer/>
            
@@ -29,34 +44,3 @@ export const App = () => {
 
 
 
-// [
-//     {
-//         "image": "http://dummyimage.com/400x200.png/5fa2dd/ffffff",
-//         "likes": [
-//             "622bd81b06c7d323b8ae4614"
-//         ],
-//         "comments": [
-//             "622c6c4f1bd0d37edc594b21"
-//         ],
-//         "tags": [
-//             "legendary"
-//         ],
-//         "isPublished": true,
-//         "_id": "622bd9e806c7d323b8ae4615",
-//         "title": "Batman Beyond: Return of the Joker",
-//         "author": {
-//             "name": "Максим Иванов",
-//             "about": "Наставник",
-//             "avatar": "https://u.kanobu.ru/articles/pics/7e6dc974-43f4-4ad0-9a55-2465566e9662.jpg",
-//             "_id": "622bd81b06c7d323b8ae4614",
-//             "email": "maxim_91@inbox.ru",
-//             "__v": 0
-//         },
-//         "text": "Change Other Device on Right Upper Arm",
-//         "created_at": "2022-03-11T23:23:20.891Z",
-//         "updated_at": "2022-03-12T09:51:45.683Z",
-//         "__v": 0,
-//         "updatedAt": "2022-03-14T12:31:11.479Z"
-//     }
-    
-// ]

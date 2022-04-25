@@ -5,7 +5,9 @@ import Grid from '@mui/material/Grid';
 
 
 export const List = ({list}) => {
-    return (
+   
+  
+ return (
  <div className='main__container'>
      
  

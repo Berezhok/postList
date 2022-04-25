@@ -5,10 +5,9 @@ import Favorite from '@mui/icons-material/Favorite';
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export const Like = () => {
-  return ( 
-  <div className='like'>
+  return (
+    
      <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
-  </div>
+    
   )
 }
-    

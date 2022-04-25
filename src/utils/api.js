@@ -13,5 +13,26 @@ class Api {
             }
         })
     }
+
+    getUserInfo(){
+        return fetch(`${this._url}/users/me`, {
+            headers: {
+                authorization: `Bearer ${this._token}`
+            }
+        })
+    }
+
+    // getAvatar(){
+    //     return fetch(`${this._url}/users/me/avatar`, {
+    //         method: "PATCH",
+    //         headers: {
+    //             authorization: `Bearer ${this._token}`
+    //         },
+    //         body:{
+    //             avatar: "https://i.ytimg.com/vi/PbbNMgPVfqs/maxresdefault.jpg"
+    //           }
+    //     })
+    // }
+
 }
 export default new Api(config);
