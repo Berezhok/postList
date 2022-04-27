@@ -6,8 +6,8 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export const Like = () => {
   return (
-    
+    <div>
      <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
-    
+     </div>
   )
 }

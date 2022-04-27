@@ -17,7 +17,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-export const Header = ({user,/*avatarUser*/}) => {
+export const Header = ({user,avatarUser}) => {
   return (
     <div className='header__line'>
         <div className="header__block">
@@ -34,7 +34,7 @@ export const Header = ({user,/*avatarUser*/}) => {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} >
-            {/* {avatarUser.avatar} */}
+          <img style={{width:"70px",height:"40px"}} src={user.avatar}/>
           </Avatar>
         }
         

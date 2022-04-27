@@ -2,6 +2,7 @@
     width: 100%;
     position: fixed;
     background-color: blanchedalmond;
+    
 }
 a{
     text-decoration: none;
@@ -14,6 +15,7 @@ div.header__block{
     height: auto;
     font-size: larger;
     padding: 20px;
+    
 }
 .right__block{
     display: flex;
