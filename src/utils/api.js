@@ -19,7 +19,7 @@ class Api {
             headers: {
                 authorization: `Bearer ${this._token}`
             }
-        })
+        }).then(oneResponce)
     }
 
     getUserInfo(){

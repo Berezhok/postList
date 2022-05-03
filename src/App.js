@@ -17,15 +17,17 @@ export const App = () => {
     
     useEffect(() => {
         api.getPosts()
-            .then(res => res.json())
             .then((result) => setPostsList(result))
+            .catch((err)=>alert("ошибка"))
             },[])
             
     useEffect(()=>{
         api.getUserInfo()
         .then(res => res.json())
-            .then((user) => setUser(user))
+            .then((user) =>setUser(user))
+            .catch((err)=>alert("ошибка"))
             },[])
+        
             
   
     
@@ -52,4 +54,10 @@ export const App = () => {
 };
 
 
+about: "Студент"
+avatar: "https://i.ytimg.com/vi/PbbNMgPVfqs/maxresdefault.jpg"
+email: "maxim@mail.ru"
+name: "Антон Бережок"
+__v: 0
+_id: "624c50e47c57d93142703808"
 

@@ -5,7 +5,6 @@ import "../list/index.css"
 
 
 export const List = ({list,like,setLike,user}) => {
-    
     return (
         <div className='main__container'>
             {list?.map((item)=> (
@@ -13,13 +12,18 @@ export const List = ({list,like,setLike,user}) => {
                 key={item._id} 
                 itemPost={item}
                 isInLike = {like?.includes(item._id)}
+                
                 setLike={setLike}
+                user={user}
                 />
-            ))
-            }
+                ))
+                }
         </div>
+        
             )
+            
         }
+       
 
 
         // author: {name: 'Максим', about: 'Наставник', avatar: 'https://u.kanobu.ru/articles/pics/7e6dc974-43f4-4ad0-9a55-2465566e9662.jpg', _id: '622bd81b06c7d323b8ae4614', email: 'maxim_91@inbox.ru', …}

@@ -1,27 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { name } from '../list';
 import "../Card/index.css"
 
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { FavoriteBorderOutlined } from '@mui/icons-material';
-import { Like } from '../like';
 import api from '../../utils/api';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
 
-export const PostCard = ({itemPost, isInLike, setLike,isMyPost}) => {
-  const {title, author, likes ,created_at, text,image} = itemPost
-  const [liked,setLiked] = useState(itemPost.likes.length) 
+
+
+export const PostCard = ({itemPost, isInLike, setLike, user, isMyPost}) => {
+  const {title, author, likes ,created_at, text,image, _id} = itemPost;
+  const [liked,setLiked] = useState(itemPost.likes.length);
   
 
+  
+ 
+  
 
   const writeLS = (key,value) => {
     const storage = JSON.parse(localStorage.getItem(key)) || []
@@ -63,10 +63,20 @@ export const PostCard = ({itemPost, isInLike, setLike,isMyPost}) => {
 
   const deletePost = () => {
     api.deletePost(itemPost._id)
-        .then((deletePost)=>{ 
-        {deletePost} })
-        .catch((err)=> alert("вы не можете удалить чужой пост"))
-  }
+        .then((deletePost)=>
+          {deletePost} )
+        .catch((err)=> alert("ошибка"))
+      }
+  
+
+      
+      const getReloadPost = () => {
+        api.getPosts(itemPost._id)
+        .then((getReloadPost) => {getReloadPost})
+      }
+
+     
+     
 
 
     return (
@@ -77,10 +87,10 @@ export const PostCard = ({itemPost, isInLike, setLike,isMyPost}) => {
           {title}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          <p className='block__img_mail'>
+          <span className='block__img_mail'>
             <img src={image}/>
             {author.email}
-          </p>
+          </span>
          </Typography>
         <Typography sx={{maxHeight:75 , overflow:"hidden"}} >
           {text}
@@ -90,23 +100,25 @@ export const PostCard = ({itemPost, isInLike, setLike,isMyPost}) => {
           </Typography>
           </CardContent>
           <div>
-       {isInLike ? (
-          <IconButton  onClick={deleteLikeOnCard}>
-            <FavoriteIcon fontSize="small"  />
-            <p style={{ fontSize: "small" }}>{liked}</p>
+       
+          <IconButton  onClick={isInLike ? deleteLikeOnCard : addLikeOnCard }>
+           {isInLike ? <FavoriteIcon fontSize="small"/>
+           : <FavoriteBorderIcon fontSize="small" />
+           }
+          <span style={{ fontSize: "small" }}>{liked}</span>
           </IconButton>
-        ) : (
-          <IconButton onClick={addLikeOnCard}  >
-            <FavoriteBorderIcon fontSize="small" />
-            <p style={{ fontSize: "small" }}>{liked}</p>
-          </IconButton>
-        )}
-          <IconButton onClick={ deletePost } aria-label="delete">
-                <DeleteIcon  />
-          </IconButton>
+
+          {user._id == author._id    ?    
+          (<IconButton onClick={deletePost} aria-label="delete">
+              <DeleteIcon />
+              </IconButton>) : (null)
+          }
+
+          
           </div>
         </Card>
   </div>
   )
 }
+
 

@@ -2,7 +2,7 @@
     width: 100%;
     position: fixed;
     background-color: blanchedalmond;
-    
+    z-index: 2;
 }
 a{
     text-decoration: none;
