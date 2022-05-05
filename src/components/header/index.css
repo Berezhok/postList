@@ -1,6 +1,6 @@
 .header__line{
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
     background-color: blanchedalmond;
     z-index: 2;
 }

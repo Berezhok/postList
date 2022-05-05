@@ -16,13 +16,14 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Link } from 'react-router-dom';
 
 export const Header = ({user,avatarUser}) => {
   return (
     <div className='header__line'>
         <div className="header__block">
             <div>
-                Logo
+            <Link to="/">Logo</Link>    
             </div>
             <div>
                 <a href='#'>Home</a>
@@ -39,7 +40,7 @@ export const Header = ({user,avatarUser}) => {
         }
         
         title={user.name} 
-        // subheader={"September 14, 2016"}
+        
       /> 
             </Card>   
         <CreatePost/>

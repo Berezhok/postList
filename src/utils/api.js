@@ -14,8 +14,9 @@ class Api {
         this._token = token;
     }
 
-    getPosts() {
-        return fetch(`${this._url}/posts`, {
+    getPosts(postId) {
+        const oneOrAllPosts = postId ? `${this._url}/posts/${postId}`: `${this._url}/posts`;
+        return fetch(oneOrAllPosts ,{
             headers: {
                 authorization: `Bearer ${this._token}`
             }
@@ -67,6 +68,25 @@ class Api {
             headers: {
                 authorization: `Bearer ${this._token}`,
             },
+        }).then(oneResponce)
+    }
+
+    getComments(postId){
+        return fetch(`${this._url}/posts/comments/${postId}`, {
+            headers: {
+                authorization: `Bearer ${this._token}`,
+            },
+        }).then(oneResponce)
+    }
+
+    addPost(post){
+        return fetch(`${this._url}/posts`,{
+            method: "POST",
+            headers: {
+                authorization: `Bearer ${this._token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(post)
         }).then(oneResponce)
     }
 

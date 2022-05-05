@@ -4,22 +4,26 @@ import "../list/index.css"
 
 
 
-export const List = ({list,like,setLike,user}) => {
+export const List = ({list,like,setLike,user,setPostList}) => {
     return (
+        <>
+        <br/>
+        <br/><br/><br/><br/>
         <div className='main__container'>
             {list?.map((item)=> (
                 <PostCard 
+                reloadList={setPostList}
                 key={item._id} 
                 itemPost={item}
                 isInLike = {like?.includes(item._id)}
-                
+                list={list}
                 setLike={setLike}
                 user={user}
                 />
                 ))
                 }
         </div>
-        
+        </>
             )
             
         }
